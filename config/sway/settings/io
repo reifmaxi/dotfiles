@@ -10,6 +10,9 @@ input type:keyboard {
   xkb_options caps:escape,grp:alt_caps_toggle
 }
 
+# Send signal to waybar when changing layout
+bindsym $alt+Escape exec 'pkill --signal SIGRTMIN+1 waybar'
+
 # XF86 keys
 bindsym XF86MonBrightnessDown exec 'light -U 5'
 bindsym XF86MonBrightnessUp exec 'light -A 5'
