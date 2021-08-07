@@ -1,0 +1,6 @@
+# Read sway(5) for a complete reference.
+
+set $mod Mod4
+set $alt Mod1
+
+include /etc/sway/config.d/*
