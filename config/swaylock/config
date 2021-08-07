@@ -1,0 +1,6 @@
+# Full reference at swaylock(1)
+
+image=~/Images/lockpaper.jpg
+show-keyboard-layout
+ignore-empty-password
+show-failed-attempts
