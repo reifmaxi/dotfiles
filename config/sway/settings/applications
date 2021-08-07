@@ -1,0 +1,20 @@
+# Quicklaunch
+set $quicklaunch [f]irefox [t]hunderbird s[i]gnal [s]potify
+mode '$quicklaunch' {
+    bindsym f exec firefox; mode 'default'
+    bindsym t exec thunderbird; mode 'default'
+    bindsym i exec signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform=wayland; mode 'default'
+    bindsym s exec flatpak run com.spotify.Client; mode 'default'
+
+    # Back to normal: Enter, Escape or same keybinding again
+    bindsym Escape mode 'default'
+    bindsym Return mode 'default'
+    bindsym CTRL+space mode 'default'
+}
+bindsym CTRL+space mode '$quicklaunch'
+
+# Static assigns
+assign [app_id="thunderbird"] 1
+assign [app_id="Signal"] 1
+assign [instance="zoom"] 3
+for_window [instance="spotify"] move to workspace 10; urgent enable
