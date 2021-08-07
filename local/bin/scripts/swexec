@@ -1,0 +1,59 @@
+!/bin/sh
+
+# Inspired by https://github.com/swaywm/sway/issues/4045.
+
+# This swaymsg wrapper allows to start an application on a selected workspace
+# with chosen properties.
+
+# For this to work add the following to your sway config
+#
+#     set $WS none
+#     for_window [shell="."] mark --add "ws:$$WS"
+#     for_window [con_mark=^ws:<WS>] move to workspace <WS>; urgent enable
+#     for_window [con_mark=^ws] mark --toggle "ws:$$WS"; set $$WS none
+#
+# and copy the third line for every workspace, replacing <WS> with the proper
+# name. 
+
+# In the same manner append
+#
+#     set $PROP none
+#     for_window [shell="."] mark --add "prop:$$PROP:"
+#     for_window [con_mark=^prop.*:<PROPERTY>:] <PROPERTY> enable
+#     for_window [con_mark=^prop:] mark --toggle "prop:$$PROP:"; set $$PROP none
+#
+# for the properties in sway(5) you want to address.
+
+# Ensure that you use neither $WS nor $PROP elsewhere in your config file!
+
+# You'll then be able to use
+#
+#     /path/to/swexec -w <WS> -p <PROPERTY1>:<PROPERTY2> <COMMAND>
+# 
+# to execute <COMMAND> on workspace <WORKSPACE> with the specified properties
+# from command line or with keybindings.
+
+# Example usage:
+# 
+#     bindsym $mod+n exec ./swexec -w 3 -p fullscreen "firefox netflix.com"
+#     ./swexec -p floating:sticky "alacritty -e nmtui"
+#
+
+while getopts w:p: option
+do
+    case "${option}" in
+        w) SETWS="set \$WS ${OPTARG}; "
+           ;;
+        p) SETPROP="set \$PROP ${OPTARG}; "
+           ;;
+        *) echo "Usage: swexec -w workspace -p property1:property2:... command"
+           exit 2
+    esac
+done
+
+shift $((OPTIND-1))
+EXEC="exec ${1}"
+
+swaymsg "${SETWS}${SETPROP}${EXEC}"
+
+exit 0

@@ -1,0 +1,28 @@
+# Inspired by https://github.com/swaywm/sway/issues/4045.
+
+# To make ~/local/bin/scripts/swexec work, a swaymsg wrapper to start an
+# application on a selected workspace with chosen properties.
+
+# Workspaces
+set $WS none
+for_window [shell="."] mark --add "ws:$$WS"
+for_window [con_mark=^ws:1] move to workspace 1; urgent enable
+for_window [con_mark=^ws:2] move to workspace 2; urgent enable
+for_window [con_mark=^ws:3] move to workspace 3; urgent enable
+for_window [con_mark=^ws:4] move to workspace 4; urgent enable
+for_window [con_mark=^ws:5] move to workspace 5; urgent enable
+for_window [con_mark=^ws:6] move to workspace 6; urgent enable
+for_window [con_mark=^ws:7] move to workspace 7; urgent enable
+for_window [con_mark=^ws:8] move to workspace 8; urgent enable
+for_window [con_mark=^ws:9] move to workspace 9; urgent enable
+for_window [con_mark=^ws:10] move to workspace 10; urgent enable
+for_window [con_mark=^ws] mark --toggle "ws:$$WS"; set $$WS none
+
+# Properties
+set $PROP none
+for_window [shell="."] mark --add "prop:$$PROP:"
+for_window [con_mark=^prop.*:floating:] floating enable
+for_window [con_mark=^prop.*:fullscreen:] fullscreen enable
+for_window [con_mark=^prop.*:border10:] border normal 10
+for_window [con_mark=^prop.*:sticky:] sticky enable
+for_window [con_mark=^prop:] mark --toggle "prop:$$PROP:" ; set $$PROP none
