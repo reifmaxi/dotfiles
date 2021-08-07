@@ -1,0 +1,51 @@
+# Start a terminal
+bindsym $mod+Return exec alacritty
+
+# Start password manager
+bindsym $mod+BackSpace exec enpass showassistant
+
+# Location of exit script
+set $swexit ~/.local/bin/scripts/swexit
+
+# CTRL-ALT-DEL menu
+set $mode_system [l]ock, [e]xit, [s]uspend, [h]ibernate, [r]eboot, power[o]ff
+mode '$mode_system'{
+    bindsym l exec $swexit lock; mode 'default'
+    bindsym e exec $swexit logout; mode 'default'
+    bindsym s exec $swexit suspend; mode 'default'
+    bindsym h exec $swexit hibernate; mode 'default'
+    bindsym r exec $swexit reboot; mode 'default'
+    bindsym o exec $swexit poweroff; mode 'default'
+
+    # Back to normal: Enter, Escape or same keybinding again
+    bindsym Return mode 'default'
+    bindsym Escape mode 'default'
+    bindsym Control+Mod1+Delete mode 'default'
+}
+bindsym Control+$alt+Delete mode '$mode_system'
+
+# Lock
+bindsym $mod+x exec $swexit lock
+
+# Idle management
+exec swayidle -w \
+    timeout 240 'notify-send "Inactivity" "Lock in 1 min!" -u critical' \
+    timeout 300 '$swexit lock' \
+    timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    before-sleep '$swexit lock'
+
+# Reload configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Media player control
+bindsym $mod+i exec playerctl previous
+bindsym $mod+o exec playerctl play-pause
+bindsym $mod+p exec playerctl next
+
+# Screenshots
+bindsym --release Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir IMAGES)/Screenshots/$(date +'Screenshot_%Y-%m-%d_%H-%M-%S.png')
+bindsym --release Control+Print exec grim -g "$(slurp)" $(xdg-user-dir IMAGES)/Screenshots/$(date +'Screenshot_%Y-%m-%d_%H-%M-%S.png')

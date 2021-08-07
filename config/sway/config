@@ -6,6 +6,7 @@ set $alt Mod1
 include settings/appearance
 include settings/applications
 include settings/io
+include settings/system
 include settings/workspaces
 
 include /etc/sway/config.d/*
