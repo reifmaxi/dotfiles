@@ -1,0 +1,6 @@
+# Autostarts
+exec mega-cmd-server
+exec blueman-applet
+exec swaymsg 'workspace 1; layout tabbed'
+exec thunderbird
+exec enpass
