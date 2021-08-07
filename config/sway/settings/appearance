@@ -1,0 +1,19 @@
+# Font
+font FreeSans 9
+
+# Color scheme
+set $black  #151718
+set $grey   #282A2B
+set $silver #D6D6D6
+set $white  #FFFFFF
+set $red    #CD3F45
+set $green  #9FCA56
+set $blue   #2980B9
+
+# Window colors
+#                       border  background text    indicator border
+client.focused          $blue   $blue      $white  $green    $blue
+client.focused_inactive $grey   $grey      $silver $grey     $grey
+client.unfocused        $grey   $grey      $silver $grey     $grey
+client.urgent           $red    $red       $black  $red      $red
+client.placeholder      $black  $black     $silver $black    $black
