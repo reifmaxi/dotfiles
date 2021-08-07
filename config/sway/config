@@ -3,4 +3,6 @@
 set $mod Mod4
 set $alt Mod1
 
+include settings/workspaces
+
 include /etc/sway/config.d/*
