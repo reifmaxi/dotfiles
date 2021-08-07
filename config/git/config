@@ -1,0 +1,9 @@
+[user]
+	name = Maximilian Reif
+	email = git@maximilianreif.de
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[alias]
+	last = log -1 HEAD
