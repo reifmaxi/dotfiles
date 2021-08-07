@@ -1,0 +1,4 @@
+# Full reference at zathurarc(5)
+
+set statusbar-home-tilde true
+set window-title-basename true
