@@ -1,0 +1,21 @@
+# Full reference at mako(5)
+
+output="eDP-1"
+default-timeout=10000
+
+font=Source Code Pro 10
+margin=3
+
+background-color=#151718
+text-color=#D6D6D6
+border-color=#2980B9
+
+[urgency=low]
+background-color=#151718
+text-color=#E6CD69
+border-color=#2980B9
+
+[urgency=high]
+background-color=#151718
+text-color=#CD3F45
+border-color=#2980B9
