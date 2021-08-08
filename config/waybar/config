@@ -17,6 +17,7 @@
     ],
 
     "modules-right": [
+        "pulseaudio",
         "network",
         "backlight",
         "idle_inhibitor",
@@ -38,6 +39,25 @@
         "format-alt": "{:%a, %d. %b  %H:%M}",
         "format-alt-click": "click-right",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "mute  {icon} {format_source}",
+        "format-muted": "mute  {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "mute ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "~/.local/bin/scripts/swexec -p floating:sticky 'alacritty -t PulseMixer -e pulsemixer'"
     },
 
     "network": {

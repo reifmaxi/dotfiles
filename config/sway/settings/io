@@ -14,6 +14,9 @@ input type:keyboard {
 bindsym $alt+Escape exec 'pkill --signal SIGRTMIN+1 waybar'
 
 # XF86 keys
+bindsym XF86AudioMute exec 'pulsemixer --toggle-mute'
+bindsym XF86AudioLowerVolume exec 'pulsemixer --change-volume -5'
+bindsym XF86AudioRaiseVolume exec 'pulsemixer --max-volume 100 --change-volume +5'
 bindsym XF86MonBrightnessDown exec 'light -U 5'
 bindsym XF86MonBrightnessUp exec 'light -A 5'
 bindsym XF86Display exec '~/.local/bin/scripts/backlight_toggle'
