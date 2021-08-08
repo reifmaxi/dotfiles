@@ -9,7 +9,7 @@ set $swexit ~/.local/bin/scripts/swexit
 
 # CTRL-ALT-DEL menu
 set $mode_system [l]ock, [e]xit, [s]uspend, [h]ibernate, [r]eboot, power[o]ff
-mode '$mode_system'{
+mode '$mode_system' {
     bindsym l exec $swexit lock; mode 'default'
     bindsym e exec $swexit logout; mode 'default'
     bindsym s exec $swexit suspend; mode 'default'
@@ -20,7 +20,7 @@ mode '$mode_system'{
     # Back to normal: Enter, Escape or same keybinding again
     bindsym Return mode 'default'
     bindsym Escape mode 'default'
-    bindsym Control+Mod1+Delete mode 'default'
+    bindsym Control+$alt+Delete mode 'default'
 }
 bindsym Control+$alt+Delete mode '$mode_system'
 
