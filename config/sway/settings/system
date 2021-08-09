@@ -1,6 +1,9 @@
 # Start a terminal
 bindsym $mod+Return exec alacritty
 
+# Start an application launcher
+bindsym $mod+d exec wofi
+
 # Start password manager
 bindsym $mod+BackSpace exec enpass showassistant
 
