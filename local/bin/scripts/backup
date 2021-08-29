@@ -1,0 +1,26 @@
+#!/bin/bash
+
+UUID=075cef4e-dbf3-4969-91bf-4427fec25893
+MOUNT=/media/backup
+
+if [[ ! $(findmnt -M "$MOUNT") ]]; then
+
+	if [[ ! -e /dev/mapper/backupdrive ]]; then
+		cryptsetup -d /root/Keys/backupdrive.key luksOpen UUID=$UUID backupdrive
+		sleep 3
+	fi
+	
+	mount /dev/mapper/backupdrive $MOUNT
+	sleep 1
+	echo "Initialized backup drive."
+fi
+
+if [[ $(findmnt -M "$MOUNT") ]]; then
+	rsync -a --delete --quiet /home /media/backup
+	umount $MOUNT
+	cryptsetup close backupdrive
+else
+	echo "Seems like backup drive is not available."
+fi
+
+exit 0

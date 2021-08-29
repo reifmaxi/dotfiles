@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/bash
 
 read lcd < /tmp/lcd
     if [ "$lcd" -eq "0" ]; then

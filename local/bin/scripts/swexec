@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/bash
 
 # Inspired by https://github.com/swaywm/sway/issues/4045.
 
