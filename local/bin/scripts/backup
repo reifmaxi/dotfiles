@@ -21,6 +21,7 @@ if [[ $(findmnt -M "$MOUNT") ]]; then
 	cryptsetup close backupdrive
 else
 	echo "Seems like backup drive is not available."
+	exit 2
 fi
 
 exit 0
