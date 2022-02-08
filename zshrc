@@ -86,6 +86,9 @@ export ARCHFLAGS="-arch x86_64"
 # Use Mozilla's wayland backend
 export MOZ_ENABLE_WAYLAND=1
 
+# No blank screen for Java-based applications under Sway
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Aliases
 source $HOME/.zsh_aliases
 
