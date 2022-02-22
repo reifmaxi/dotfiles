@@ -1,0 +1,22 @@
+# Visit https://man.cx/latexmk for a complete reference.
+
+# Run zathura detached.
+$pdf_previewer = 'start zathura %O %S';
+
+# The biber processing program.
+$biber = 'biber %O %S';
+
+# Run bibtex or biber whenever it appears necessary to update the bbl files,
+# without testing for the existence of the bib files; always delete .bbl files
+# in a cleanup.
+$bibtex_use = 2;
+
+# Suppress creation of dvi and postcript files.
+$dvi_mode = 0;
+$postscript_mode = 0;
+
+# Specify custom options for *tex commands.
+set_tex_cmds( '-interaction=errorstopmode -synctex=1 %O %S' );
+
+# Show CPU time used.
+$show_time = 1;
